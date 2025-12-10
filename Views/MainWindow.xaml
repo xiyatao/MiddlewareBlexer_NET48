@@ -1,0 +1,129 @@
+﻿<Window
+    x:Class="Kinect_Middleware.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="clr-namespace:Kinect_Middleware.Views.Pages"
+    Title="Kinect Middleware"
+    Width="800"
+    Height="500"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <SolidColorBrush x:Key="Primary" Color="#252525" />
+        <SolidColorBrush x:Key="Secondary" Color="#333333" />
+
+        <Style x:Key="TabItemStyle" TargetType="TabItem">
+            <Setter Property="Background" Value="{DynamicResource Secondary}" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TabItem">
+                        <Grid Name="Panel">
+                            <ContentPresenter
+                                x:Name="ContentSite"
+                                Margin="8,8"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                ContentSource="Header" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="Panel" Property="Background" Value="{DynamicResource Primary}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="TabControlerStyle" TargetType="TabControl">
+            <Setter Property="Background" Value="{DynamicResource Primary}" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="TabStripPlacement" Value="Left" />
+        </Style>
+    </Window.Resources>
+    <Grid Background="{DynamicResource Secondary}">
+        <TabControl Style="{DynamicResource TabControlerStyle}">
+            <TabItem Style="{DynamicResource TabItemStyle}">
+                <TabItem.Header>
+                    <Image
+                        Width="32"
+                        Height="32"
+                        Source="/images/user.png" />
+                </TabItem.Header>
+
+                <pages:LoginView />
+            </TabItem>
+
+            <TabItem Style="{DynamicResource TabItemStyle}">
+                <TabItem.Header>
+                    <Image
+                        Width="32"
+                        Height="32"
+                        Source="/images/house.png" />
+                </TabItem.Header>
+
+                <pages:MainViewNew />
+            </TabItem>
+
+            <TabItem Style="{DynamicResource TabItemStyle}">
+                <TabItem.Header>
+                    <Image
+                        Width="32"
+                        Height="32"
+                        Source="/images/video.png" />
+                </TabItem.Header>
+
+                <pages:CameraView />
+            </TabItem>
+
+            <TabItem Style="{DynamicResource TabItemStyle}">
+                <TabItem.Header>
+                    <Image
+                        Width="32"
+                        Height="32"
+                        Source="/images/terminal.png" />
+                </TabItem.Header>
+
+                <pages:LogView />
+            </TabItem>
+
+            <TabItem Style="{DynamicResource TabItemStyle}">
+                <TabItem.Header>
+                    <Image
+                        Width="32"
+                        Height="32"
+                        Source="/Images/TCP.png" />
+                </TabItem.Header>
+
+                <pages:TCPReceiver />
+            </TabItem>
+
+            <TabItem Style="{DynamicResource TabItemStyle}">
+                <TabItem.Header>
+                    <Image
+                        Width="32"
+                        Height="32"
+                        Source="/Images/graph.png" />
+                </TabItem.Header>
+
+                <pages:SensorGraphs />
+            </TabItem>
+
+            <TabItem Style="{DynamicResource TabItemStyle}">
+                <TabItem.Header>
+                    <Image
+                        Width="32"
+                        Height="32"
+                        Source="/images/settings.png" />
+                </TabItem.Header>
+
+                <pages:SettingsView />
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

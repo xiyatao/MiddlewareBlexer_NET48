@@ -1,0 +1,60 @@
+﻿<UserControl x:Class="Kinect_Middleware.Views.Pages.MainView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:components="clr-namespace:Kinect_Middleware.Views.Components"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="800">
+    <Grid>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal"
+                            VerticalAlignment="Top"
+                            Margin="10">
+
+                <TextBlock
+                           HorizontalAlignment="Left"
+                           Text="{DynamicResource LabelSelectKinectDevice}" 
+                           VerticalAlignment="Center"
+                           Foreground="White"
+                           Margin="10"/>
+
+                <ComboBox 
+                        Name="ComboBox"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Stretch"
+                        HorizontalContentAlignment="Stretch"
+                        SelectionChanged="ComboBox_SelectionChanged"
+                        Margin="10">
+                    <ComboBoxItem>Azure Kinect</ComboBoxItem>
+                    <ComboBoxItem>Xbox one Kinect</ComboBoxItem>
+                </ComboBox>
+
+                <Button Name="Start" 
+                            VerticalAlignment="Center"
+                            Width="80" 
+                            Height="25" 
+                            Content="{DynamicResource BtnStart}"
+                            Click="Start_Click"
+                            Margin="10"/>
+
+                <Button Name="Disconnect" 
+                        VerticalAlignment="Center"
+                        Width="80" 
+                        Height="25" 
+                        Content="{DynamicResource BtnDisconnect}"
+                        Click="Stop_Click"
+                        Margin="10"
+                        IsEnabled="{Binding Path=IsDisconnectedAvailable, Mode=OneWay}"/>
+            </StackPanel>
+
+            <StackPanel Margin="10">
+                <components:DeviceStatusView Text="Kinect One" 
+                                             Status="{Binding Path=IsKinectOneRunning, Mode=OneWay}"/>
+
+                <components:DeviceStatusView Text="Azure Kinect" 
+                                             Status="{Binding Path=IsAzureKinectRunning, Mode=OneWay}"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

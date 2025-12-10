@@ -1,0 +1,205 @@
+﻿<UserControl
+    x:Class="Kinect_Middleware.Views.Pages.MainViewNew"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:components="clr-namespace:Kinect_Middleware.Views.Components"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Kinect_Middleware.Views.Pages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="500"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+
+    <Grid Margin="10" Background="Transparent">
+        <StackPanel HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"
+                    Orientation="Vertical">
+
+            <!--  Device Status  -->
+            <GroupBox Margin="0,0,0,10"
+                      Foreground="White"
+                      Header="{DynamicResource GroupDeviceStatus}">
+                <StackPanel Margin="10,5"
+                            HorizontalAlignment="Left"
+                            Orientation="Horizontal">
+                    <components:DeviceStatusView Margin="10,0"
+                                                 Status="{Binding Path=IsKinectOneRunning, Mode=OneWay}"
+                                                 Text="{DynamicResource KinectXbox}" />
+                    <components:DeviceStatusView Margin="10,0"
+                                                 Status="{Binding Path=IsAzureKinectRunning, Mode=OneWay}"
+                                                 Text="{DynamicResource KinectAzure}" />
+                    <components:DeviceStatusView Margin="10,0"
+                                                 Status="{Binding IsHeartRateRunning}"
+                                                 Text="{DynamicResource SensorHeartRate}" />
+                    <components:DeviceStatusView Margin="10,0"
+                                                 Status="{Binding IsAccelerometerRunning}"
+                                                 Text="{DynamicResource SensorAccelerometer}" />
+                </StackPanel>
+            </GroupBox>
+
+            <!--  Connectivity Status  -->
+            <GroupBox Margin="0,0,0,10"
+                      Foreground="White"
+                      Header="{DynamicResource GroupConnectivityStatus}">
+                <StackPanel Margin="10,5" Orientation="Vertical">
+                    <StackPanel Margin="0,0,0,5" VerticalAlignment="Center" Orientation="Horizontal">
+                        <TextBlock Foreground="White"
+                                   Text="{DynamicResource LabelBluetoothStatus}" />
+                        <TextBlock x:Name="BluetoothStatusText"
+                                   Margin="5,0,0,0"
+                                   FontWeight="Bold" />
+                    </StackPanel>
+
+                    <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                        <TextBlock Foreground="White"
+                                   Text="{DynamicResource LabelTcpStatus}" />
+                        <TextBlock x:Name="TcpStatusText"
+                                   Margin="5,0,0,0"
+                                   FontWeight="Bold" />
+                    </StackPanel>
+
+                    <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                        <TextBlock Foreground="White"
+                                   Text="{DynamicResource LabelTcpClientStatus}" />
+                        <TextBlock x:Name="TcpClientText"
+                                   Margin="5,0,0,0"
+                                   FontWeight="Bold" />
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+
+            <!--  Device Controls  -->
+            <GroupBox Margin="0,0,0,10"
+                      Foreground="White"
+                      Header="{DynamicResource GroupDeviceControls}">
+                <StackPanel Margin="10,5" Orientation="Horizontal">
+                    <TextBlock Margin="10,0"
+                               VerticalAlignment="Center"
+                               Foreground="White"
+                               Text="{DynamicResource LabelSelectKinectDevice}" />
+                    <ComboBox Name="ComboBox"
+                              Width="150"
+                              Margin="10,0"
+                              VerticalAlignment="Center"
+                              SelectionChanged="ComboBox_SelectionChanged">
+                        <ComboBoxItem>Azure Kinect</ComboBoxItem>
+                        <ComboBoxItem>Xbox one Kinect</ComboBoxItem>
+                    </ComboBox>
+                    <Button Name="Start"
+                            Width="80"
+                            Height="25"
+                            Margin="10,0"
+                            VerticalAlignment="Center"
+                            Click="Start_Click"
+                            Content="{DynamicResource BtnStart}" />
+                    <Button Name="Disconnect"
+                            Width="100"
+                            Height="25"
+                            Margin="10,0"
+                            VerticalAlignment="Center"
+                            Click="Stop_Click"
+                            Content="{DynamicResource BtnDisconnect}"
+                            IsEnabled="{Binding Path=IsDisconnectedAvailable, Mode=OneWay}" />
+                </StackPanel>
+            </GroupBox>
+
+            <!--  Sensor Selection  -->
+            <GroupBox x:Name="SensorSelectionGroupBox"
+                      Margin="0"
+                      Foreground="White"
+                      Header="{DynamicResource GroupSelectSensors}">
+                <StackPanel Margin="10,5" Orientation="Horizontal">
+                    <CheckBox Name="AccelerometerCheckBox"
+                              Margin="10,0"
+                              Checked="AccelerometerCheckBox_Checked"
+                              Unchecked="AccelerometerCheckBox_Unchecked"
+                              Content="{DynamicResource SensorAccelerometer}"
+                              Foreground="White" />
+                    <CheckBox Name="HeartRateCheckBox"
+                              Margin="10,0"
+                              Checked="HeartRateCheckBox_Checked"
+                              Unchecked="HeartRateCheckBox_Unchecked"
+                              Content="{DynamicResource SensorHeartRate}"
+                              Foreground="White" />
+                </StackPanel>
+            </GroupBox>
+
+            <!--  Heart Rate Sensor Controls  -->
+            <GroupBox x:Name="HeartRateSensorControls"
+                      Margin="0,10,0,0"
+                      Foreground="White"
+                      Header="{DynamicResource GroupHeartRateSensorControls}"
+                      Visibility="Collapsed">
+                <StackPanel Margin="10,5" Orientation="Vertical">
+                    <TextBlock Margin="10,0"
+                               VerticalAlignment="Center"
+                               Foreground="White"
+                               Text="{DynamicResource LabelSelectHeartRateSensor}" />
+
+                    <!-- 改为多选 ListBox -->
+                    <ListBox x:Name="HeartRateSensorListBox"
+                             SelectionMode="Multiple"
+                             Height="60"
+                             Width="180"
+                             Margin="10,5,0,5"
+                             VerticalAlignment="Center">
+                        <ListBoxItem Content="Polar H10"/>
+                        <ListBoxItem Content="Bangle watch"/>
+                    </ListBox>
+
+                    <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
+                        <Button x:Name="HeartRateConnect"
+                                Width="80"
+                                Height="25"
+                                Margin="0,0,10,0"
+                                VerticalAlignment="Center"
+                                Click="HeartRateConnect_Click"
+                                Content="{DynamicResource BtnStart}" />
+                        <Button x:Name="HeartRateDisconnect"
+                                Width="100"
+                                Height="25"
+                                VerticalAlignment="Center"
+                                Click="HeartRateDisconnect_Click"
+                                Content="{DynamicResource BtnDisconnect}"
+                                IsEnabled="False" />
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+
+            <!--  Accelerometer Sensor Controls  -->
+            <GroupBox x:Name="AccelerometerSensorControls"
+                      Margin="0,10,0,0"
+                      Foreground="White"
+                      Header="{DynamicResource GroupAccelerometerSensorControls}"
+                      Visibility="Collapsed">
+                <StackPanel Margin="10,5" Orientation="Horizontal">
+                    <TextBlock Margin="10,0"
+                               VerticalAlignment="Center"
+                               Foreground="White"
+                               Text="{DynamicResource LabelSelectAccelerometerSensor}" />
+                    <ComboBox Name="AccelerometerSensorComboBox"
+                              Width="150"
+                              Margin="10,0"
+                              VerticalAlignment="Center">
+                        <ComboBoxItem>Bangle watch</ComboBoxItem>
+                    </ComboBox>
+                    <Button Name="AccelerometerConnect"
+                            Width="80"
+                            Height="25"
+                            Margin="10,0"
+                            VerticalAlignment="Center"
+                            Click="AccelerometerConnect_Click"
+                            Content="{DynamicResource BtnStart}" />
+                    <Button Name="AccelerometerDisconnect"
+                            Width="100"
+                            Height="25"
+                            Margin="10,0"
+                            VerticalAlignment="Center"
+                            Click="AccelerometerDisconnect_Click"
+                            Content="{DynamicResource BtnDisconnect}"
+                            IsEnabled="False" />
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+    </Grid>
+</UserControl>
