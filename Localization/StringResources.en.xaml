@@ -1,0 +1,121 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
+    <system:String x:Key="BtnLogin">
+        Login
+    </system:String>
+    <system:String x:Key="BtnLogout">
+        Logout
+    </system:String>
+    <system:String x:Key="BtnWebsite">
+        Go to website
+    </system:String>
+
+    <system:String x:Key="LabelSelectKinectDevice">
+        Select kinect device:
+    </system:String>
+    <system:String x:Key="BtnStart">
+        Start
+    </system:String>
+    <system:String x:Key="BtnDisconnect">
+        Disconnect
+    </system:String>
+
+    <system:String x:Key="LabelApp">
+        App
+    </system:String>
+    <system:String x:Key="LabelAppComment">
+        In order for the language of the application to change, the application must be reset.
+    </system:String>
+
+    <system:String x:Key="LabelLanguage">
+        Language
+    </system:String>
+
+    <system:String x:Key="LabelAzureKinectComment">
+        For the settings to take effect, you must reconnect the kinect if you are currently using it.
+    </system:String>
+    <system:String x:Key="LabelSensorOrientation">
+        Sensor orientation
+    </system:String>
+    <system:String x:Key="Default">
+        Default
+    </system:String>
+    <system:String x:Key="Flip180">
+        Flip 180
+    </system:String>
+    <system:String x:Key="Clockwise90">
+        Clockwise 90
+    </system:String>
+    <system:String x:Key="CounterClockwise90">
+        Counter clockwise 90
+    </system:String>
+    <system:String x:Key="LabelProcessingMode">
+        Processing mode
+    </system:String>
+    <system:String x:Key="LabelColorResolution">
+        Color resolution
+    </system:String>
+    <system:String x:Key="LabelFPS">
+        FPS
+    </system:String>
+
+    <system:String x:Key="LabelKinectOneComment">
+        There are currently no settings available for kinect one.
+    </system:String>
+
+
+    <!-- =================================================================================== -->
+    <!--                                 VIEW LOCALIZATION                                   -->
+    <!--                     Additions by Fedi Khayati – IoT Master 2024–2025                -->
+    <!-- =================================================================================== -->
+
+    <!-- ============================= MAIN VIEW LOCALIZATION ============================== -->
+    <!-- Section Titles -->
+    <system:String x:Key="GroupDeviceControls">Kinect Controls</system:String>    <!-- Header for the control section of Kinect -->
+    <system:String x:Key="GroupDeviceStatus">Device Status</system:String>    <!-- Header for device status indicators -->
+    <system:String x:Key="GroupConnectivityStatus">Connectivity Status</system:String>    <!-- Label for Connectivity status -->
+    <system:String x:Key="GroupSelectSensors">Select Sensors</system:String>    <!-- Header for sensor selection checkboxes -->
+    <!-- Kinect Device Names -->
+    <system:String x:Key="KinectAzure">Azure Kinect</system:String>    <!-- Display name for Azure Kinect option -->
+    <system:String x:Key="KinectXbox">Xbox One Kinect</system:String>    <!-- Display name for Xbox Kinect option -->
+    <!-- Sensor Options -->
+    <system:String x:Key="SensorAccelerometer">Accelerometer</system:String>    <!-- Label for Accelerometer checkbox -->
+    <system:String x:Key="SensorHeartRate">Heart Rate</system:String>    <!-- Label for Heart Rate checkbox -->
+
+    <!-- Status Labels -->
+    <system:String x:Key="LabelBluetoothStatus">Bluetooth Status:</system:String>
+    <system:String x:Key="LabelTcpStatus">TCP Status:</system:String>
+    <system:String x:Key="LabelTcpClientStatus">TCP Client Status:</system:String>
+    <system:String x:Key="LabelStatus">Status:</system:String>
+
+    <!-- ========================= HEART RATE SENSOR CONTROLS =============================== -->
+    <!-- Section Titles -->
+    <system:String x:Key="GroupHeartRateSensorControls">Heart Rate Sensor Controls</system:String>    <!-- Header for heart rate sensor controls -->
+    <system:String x:Key="LabelSelectHeartRateSensor">Select heart rate sensor:</system:String>    <!-- Label for heart rate sensor dropdown -->
+    <!-- Heart Rate Sensor Options -->
+    <system:String x:Key="HeartRate">Heart Rate</system:String>    <!-- Polar H10 sensor option -->
+    <system:String x:Key="SensorXiaomiBand">Xiaomi Band</system:String>    <!-- Xiaomi Band sensor option -->
+    <system:String x:Key="Accelerometer">Accelerometer</system:String>    <!-- Bangle Watch sensor option -->
+    
+    <!-- ====================== ACCELEROMETER SENSOR CONTROLS =============================== -->
+    <!-- Section Titles -->
+    <system:String x:Key="GroupAccelerometerSensorControls">Accelerometer Sensor Controls</system:String>    <!-- Header for accelerometer controls -->
+    <system:String x:Key="LabelSelectAccelerometerSensor">Select accelerometer sensor:</system:String>    <!-- Label for accelerometer dropdown -->
+    <!-- Accelerometer Sensor Options -->
+    <system:String x:Key="SensorBangle">Bangle Watch</system:String>    <!-- Bangle sensor option -->
+    <system:String x:Key="SensorXiaomi">Xiaomi Band</system:String>    <!-- Xiaomi sensor option -->
+
+    <!-- ======================= BLUETOOTH DEVICE SCANNER ======================== -->
+    <!-- Section Titles -->
+    <system:String x:Key="GroupBluetoothScanner">Bluetooth Device Scanner</system:String>    <!-- Header for the Bluetooth scanner group -->
+    <system:String x:Key="TitleBluetoothScanner">Bluetooth Device Scanner</system:String>    <!-- Window title -->
+    <!-- Buttons -->
+    <system:String x:Key="BtnScanDevices">Scan for Devices</system:String>    <!-- Scan button content -->
+    <system:String x:Key="BtnPair">Pair</system:String>    <!-- Pair button content -->
+    <!-- Labels -->
+    <system:String x:Key="LabelAvailableDevices">Available Devices</system:String>    <!-- Label above devices list -->
+    <!-- Status Messages -->
+    <system:String x:Key="ScanStatusScanning">Scanning for nearby devices...</system:String>    <!-- Scanning status message -->
+
+</ResourceDictionary>
